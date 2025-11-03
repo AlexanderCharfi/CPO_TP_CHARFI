@@ -2,7 +2,6 @@
 package tp1_stats_charfi;
 
 import java.util.Scanner;
-import java.util.Random;
 
 /**
  *
