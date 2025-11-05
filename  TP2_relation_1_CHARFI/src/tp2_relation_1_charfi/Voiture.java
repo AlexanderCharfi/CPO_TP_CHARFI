@@ -13,19 +13,15 @@ public class Voiture {
     String Marque;
     int PuissanceCV;
     Personne Proprietaire ;
-
-    public Voiture(String Modele, String Marque, int PuissanceCV, String Proprietaire) {
+    public Voiture(String Modele, String Marque, int PuissanceCV, Personne Proprietaire) {
         this.Modele = Modele;
         this.Marque = Marque;
         this.PuissanceCV = PuissanceCV;
-        Proprietaire = null;
+        this.Proprietaire = null;
     }
-   
     public String toString() {
         String chaine_a_retourner;
         chaine_a_retourner = "Une " + Modele + " " + Marque + " avec une puissance de " + PuissanceCV + " appartenant à " + Proprietaire;
         return chaine_a_retourner;
-    }
-    
-    
+    }   
 }
