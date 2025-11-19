@@ -2,33 +2,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_heroic_fantasy_charfi;
+package Armes;
+
+import Armes.Arme;
 
 /**
  *
  * @author Alexander
  */
-public abstract class Arme {
-
+public class Baton extends Arme {
     String nom;
-    int niveau;
-
-    public Arme(String nom, int niveau) {
+    int age;
+    
+    public Baton (String nom, int niveau, int age) {
+        super(nom, niveau);
         this.nom = nom;
-        if (niveau > 100) {
-            this.niveau = 100;
+        if (age >= 100) {
+            this.age = 99;
         }
-        else if (niveau < 0) {
-            this.niveau = 1;
+        else if (age < 0) {
+            this.age = 1;
         }
         else {
-            this.niveau = niveau;
+            this.age = age;
         }
     }
 
     @Override
     public String toString() {
-        return "Arme{" + "nom=" + nom + ", niveau=" + niveau + '}';
+        return "Epee{" + "nom=" + nom + ", finesse=" + age + '}';
     }
-
 }
