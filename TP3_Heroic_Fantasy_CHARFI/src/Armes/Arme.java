@@ -17,18 +17,16 @@ public abstract class Arme {
         this.nom = nom;
         if (niveau > 100) {
             this.niveau = 100;
-        }
-        else if (niveau < 0) {
+        } else if (niveau < 0) {
             this.niveau = 1;
-        }
-        else {
+        } else {
             this.niveau = niveau;
         }
     }
 
-public String getNom() {
-    return nom;
-}
+    public String getNom() {
+        return nom;
+    }
 
     @Override
     public String toString() {

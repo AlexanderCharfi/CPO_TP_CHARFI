@@ -23,15 +23,19 @@ public class TP3_Heroic_Fantasy_CHARFI {
 
         Epee Excalibur = new Epee("Excalibur", 7, 5);
         Epee Durandal = new Epee("Durandal", 4, 7);
+        Epee Caliburn = new Epee("Caliburn", 5, 6);
         Baton Chêne = new Baton("Chêne", 4, 5);
         Baton Charme = new Baton("Charme", 5, 6);
+        Baton Branche = new Baton("Saule", 2, 3);
 
         ArrayList<Arme> ListeArmes;
         ListeArmes = new ArrayList<Arme>();
         ListeArmes.add(Excalibur);
         ListeArmes.add(Durandal);
+        ListeArmes.add(Caliburn);
         ListeArmes.add(Chêne);
         ListeArmes.add(Charme);
+        ListeArmes.add(Branche);
 
         int taille_arme = ListeArmes.size();
         int i_arme = 0;
@@ -44,15 +48,15 @@ public class TP3_Heroic_Fantasy_CHARFI {
         Magicien Gandalf = new Magicien("Gandalf", 65, true);
         Magicien Garcimore = new Magicien("Garcimore", 44, false);
         Guerrier Conan = new Guerrier("Conan", 78, false);
-        Guerrier Lannister = new Guerrier("Lannister", 45, true);  
-        
+        Guerrier Lannister = new Guerrier("Lannister", 45, true);
+
         ArrayList<Personnage> ListePersonnage;
         ListePersonnage = new ArrayList<Personnage>();
         ListePersonnage.add(Gandalf);
         ListePersonnage.add(Garcimore);
         ListePersonnage.add(Conan);
         ListePersonnage.add(Lannister);
-        
+
         int taille_perso = ListePersonnage.size();
         int i_perso = 0;
 
@@ -61,9 +65,26 @@ public class TP3_Heroic_Fantasy_CHARFI {
             i_perso = i_perso + 1;
         }
 
+        Conan.ajouterArme(Branche);      // 1 bâton
+        Conan.ajouterArme(Excalibur);  // 1ère épée
+        Conan.ajouterArme(Durandal);
+        Conan.equiperArme("Excalibur");
+
+        Gandalf.ajouterArme(Charme);    // 1er bâton
+        Gandalf.ajouterArme(Chêne);     // 2e bâton
+        Gandalf.ajouterArme(Caliburn);
+        Gandalf.ajouterArme(Charme);
+
+        System.out.println("Armes préférées de Gandalf : " + Gandalf.compterArmesPreferées());
+
+        for (Personnage p : ListePersonnage) {
+            System.out.println(p);
+
+        }
+
     }
 
 }
 
 
-//Arrêter au 32 inclu
+//Arrêter au 42 inclu

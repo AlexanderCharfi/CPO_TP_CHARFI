@@ -5,13 +5,16 @@
 package Personnages;
 
 import Personnages.Personnage;
+import Armes.Arme;
+import Armes.Epee;
+import Armes.Baton;
 
 /**
  *
  * @author Alexander
  */
 public class Magicien extends Personnage {
-    
+
     boolean confirme;
 
     public Magicien(String nom, int niveauVie, boolean confirme) {
@@ -23,9 +26,19 @@ public class Magicien extends Personnage {
         this.confirme = confirme;
     }
 
+    public int compterArmesPreferées() {
+        int count = 0;
+        for (Arme arme : InventaireArme) {
+            if (arme instanceof Baton) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     @Override
     public String toString() {
         return super.toString() + ", Confirmé: " + confirme;
     }
-    
+
 }

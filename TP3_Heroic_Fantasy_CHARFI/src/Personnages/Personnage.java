@@ -21,7 +21,7 @@ public class Personnage {
         this.nom = nom;
         this.niveauVie = niveauVie;
         this.InventaireArme = InventaireArme;
-        this.ArmeEnMain = ArmeEnMain;
+        this.ArmeEnMain = null;
     }
 
     public int DonnerNiveauVie() {
@@ -42,12 +42,32 @@ public class Personnage {
             System.out.println("Inventaire plein ! Impossible d'ajouter " + arme.getNom());
         }
     }
+    public Arme getArmeEnMain() {
+        return ArmeEnMain;
+    }
 
-        @Override
-        public String toString
-        
-            () {
-        return "Nom: " + nom + ", Niveau de vie: " + niveauVie;
+    public void equiperArme(String nomArme) {
+        for (Arme a : InventaireArme) {
+            if (a.getNom().equalsIgnoreCase(nomArme)) {
+                ArmeEnMain = a;
+                System.out.println("Arme " + nomArme + " équipée avec succès !");
+                return;
+            }
         }
+        System.out.println("Arme " + nomArme + " introuvable dans l'inventaire.");
+    }
+
+    @Override
+    public String toString() {
+
+        String info = "Nom: " + nom + ", Niveau de vie: " + niveauVie;
+        if (ArmeEnMain != null) {
+            info += ", Arme en main: " + ArmeEnMain.toString();
+        } else {
+            info += ", Arme en main: aucune";
+        }
+        return info;
 
     }
+
+}

@@ -5,6 +5,9 @@
 package Personnages;
 
 import Personnages.Personnage;
+import Armes.Arme;
+import Armes.Epee;
+import Armes.Baton;
 
 /**
  *
@@ -21,6 +24,16 @@ public class Guerrier extends Personnage {
 
     public void setACheval(boolean aCheval) {
         this.aCheval = aCheval;
+    }
+
+    public int compterArmesPreferées() {
+        int count = 0;
+        for (Arme arme : InventaireArme) {
+            if (arme instanceof Epee) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
