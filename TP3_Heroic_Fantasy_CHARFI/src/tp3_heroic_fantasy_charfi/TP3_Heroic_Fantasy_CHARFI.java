@@ -82,9 +82,13 @@ public class TP3_Heroic_Fantasy_CHARFI {
 
         }
 
+        System.out.println("Nombre total de personnages : " + Personnage.getNbPersonnages());
+        System.out.println("Nombre de guerriers : " + Guerrier.getNbGuerriers());
+        System.out.println("Nombre de magiciens : " + Magicien.getNbMagiciens());
+
     }
 
 }
 
 
-//Arrêter au 42 inclu
+//Arrêter au 45 inclu

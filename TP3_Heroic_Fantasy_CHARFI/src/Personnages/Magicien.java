@@ -16,10 +16,12 @@ import Armes.Baton;
 public class Magicien extends Personnage {
 
     boolean confirme;
+    static int nbMagiciens = 0;
 
     public Magicien(String nom, int niveauVie, boolean confirme) {
         super(nom, niveauVie);
         this.confirme = confirme;
+        nbMagiciens++;
     }
 
     public void setACheval(boolean aCheval) {
@@ -34,6 +36,10 @@ public class Magicien extends Personnage {
             }
         }
         return count;
+    }
+
+    public static int getNbMagiciens() {
+        return nbMagiciens;
     }
 
     @Override

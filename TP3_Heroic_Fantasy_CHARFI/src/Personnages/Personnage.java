@@ -16,12 +16,14 @@ public class Personnage {
     String nom;
     int niveauVie;
     Arme ArmeEnMain;
+    static int nbPersonnages = 0;
 
     public Personnage(String nom, int niveauVie) {
         this.nom = nom;
         this.niveauVie = niveauVie;
         this.InventaireArme = InventaireArme;
         this.ArmeEnMain = null;
+        nbPersonnages++;
     }
 
     public int DonnerNiveauVie() {
@@ -42,6 +44,7 @@ public class Personnage {
             System.out.println("Inventaire plein ! Impossible d'ajouter " + arme.getNom());
         }
     }
+
     public Arme getArmeEnMain() {
         return ArmeEnMain;
     }
@@ -55,6 +58,10 @@ public class Personnage {
             }
         }
         System.out.println("Arme " + nomArme + " introuvable dans l'inventaire.");
+    }
+
+    public static int getNbPersonnages() {
+        return nbPersonnages;
     }
 
     @Override

@@ -16,10 +16,12 @@ import Armes.Baton;
 public class Guerrier extends Personnage {
 
     boolean aCheval;
+    static int nbGuerriers = 0;
 
     public Guerrier(String nom, int niveauVie, boolean aCheval) {
         super(nom, niveauVie);
         this.aCheval = aCheval;
+        nbGuerriers++;
     }
 
     public void setACheval(boolean aCheval) {
@@ -34,6 +36,10 @@ public class Guerrier extends Personnage {
             }
         }
         return count;
+    }
+
+    public static int getNbGuerriers() {
+        return nbGuerriers;
     }
 
     @Override
