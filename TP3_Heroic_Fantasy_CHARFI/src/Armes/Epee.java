@@ -26,6 +26,10 @@ public class Epee extends Arme {
             this.finesse = finesse;
         }
     }
+    
+    public int getFinesse() {
+        return finesse;
+    }
 
     @Override
     public String toString() {

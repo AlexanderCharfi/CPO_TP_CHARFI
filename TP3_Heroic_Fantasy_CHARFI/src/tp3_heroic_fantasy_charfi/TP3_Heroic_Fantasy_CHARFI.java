@@ -86,6 +86,59 @@ public class TP3_Heroic_Fantasy_CHARFI {
         System.out.println("Nombre de guerriers : " + Guerrier.getNbGuerriers());
         System.out.println("Nombre de magiciens : " + Magicien.getNbMagiciens());
 
+        System.out.println("=== Test Question 54 ===");
+        System.out.println("Caractéristiques du magicien Gandalf : " + Gandalf);
+        System.out.println("Caractéristiques du guerrier Conan : " + Conan);
+
+        System.out.println("Nombre total de personnages : " + Personnage.getNbPersonnages());
+        System.out.println("Nombre de guerriers : " + Guerrier.getNbGuerriers());
+        System.out.println("Nombre de magiciens : " + Magicien.getNbMagiciens());
+
+        System.out.println("\n=== Test Question 55 ===");
+        System.out.println("Fatigue du guerrier Conan...");
+        Conan.seFatiguer();
+
+        System.out.println("\n=== Test Question 56 ===");
+        System.out.println("Caractéristiques de Conan après fatigue : " + Conan);
+
+        if (Conan.estVivant()) {
+            System.out.println("Conan est toujours vivant.");
+        } else {
+            System.out.println("Conan est mort.");
+        }
+
+        System.out.println("\n=== Test Question 57 et 65 ===");
+        System.out.println("Conan attaque Gandalf !");
+        Conan.attaquer(Gandalf); // Conan inflige 30 points à Gandalf
+
+// Affichage des caractéristiques après l'attaque
+        System.out.println("Caractéristiques de Gandalf après l'attaque : " + Gandalf);
+        System.out.println("Caractéristiques de Conan après l'attaque : " + Conan);
+
+        System.out.println("\n=== Test Question 64 ===");
+        System.out.println("Gandalf attaque Conan !");
+        Gandalf.attaquer(Conan);
+
+// Affichage des caractéristiques après l'attaque
+        System.out.println("Caractéristiques de Gandalf après l'attaque : " + Gandalf);
+        System.out.println("Caractéristiques de Conan après l'attaque : " + Conan);
+
+        
+System.out.println("\n=== Test Question 66 ===");
+if (Gandalf.estVivant()) {
+    System.out.println("Gandalf est toujours vivant.");
+} else {
+    System.out.println("Gandalf est mort.");
+}
+
+if (Conan.estVivant()) {
+    System.out.println("Conan est toujours vivant.");
+} else {
+    System.out.println("Conan est mort.");
+}
+
+
+
     }
 
 }

@@ -43,8 +43,23 @@ public class Magicien extends Personnage {
     }
 
     @Override
+    public void attaquer(Personnage cible) {
+        cible.estAttaque(20); // Magicien inflige 20 points
+    }
+
+    @Override
+    public void detruire() {
+        nbMagiciens--;
+        nbPersonnages--;
+        System.out.println("Magicien détruit : " + this.getNom());
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ", Confirmé: " + confirme;
     }
 
+    boolean isConfirme() {
+        return confirme;
+    }
 }

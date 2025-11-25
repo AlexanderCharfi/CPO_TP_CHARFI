@@ -5,13 +5,16 @@
 package Personnages;
 
 import Armes.Arme;
+import Armes.Baton;
+import Armes.Epee;
 import java.util.ArrayList;
+import tp3_heroic_fantasy_charfi.etreVivant;
 
 /**
  *
  * @author Alexander
  */
-public class Personnage {
+public abstract class Personnage implements etreVivant {
 
     String nom;
     int niveauVie;
@@ -64,6 +67,45 @@ public class Personnage {
         return nbPersonnages;
     }
 
+    public void detruire() {
+        nbPersonnages--;
+        System.out.println("Personnage détruit : " + this.getNom());
+    }
+
+    public void attaquer(Personnage cible) {
+        if (ArmeEnMain == null) {
+            System.out.println(getNom() + " n'a pas d'arme !");
+            return;
+        }
+
+        int degats = ArmeEnMain.getNiveauAttaque();
+
+        // Cas Magicien avec Bâton
+        if (this instanceof Magicien && ArmeEnMain instanceof Baton) {
+            degats *= ((Baton) ArmeEnMain).getAge();
+        }
+
+        // Cas Guerrier avec Épée
+        if (this instanceof Guerrier && ArmeEnMain instanceof Epee) {
+            degats *= ((Epee) ArmeEnMain).getFinesse();
+        }
+
+        // Réduction si confirmé ou à cheval
+        if ((this instanceof Magicien && ((Magicien) this).isConfirme())
+                || (this instanceof Guerrier && ((Guerrier) this).isACheval())) {
+            degats /= 2;
+        }
+
+        // Fatigue après attaque
+        this.seFatiguer();
+
+        // Appliquer les dégâts
+        cible.estAttaque(degats);
+
+        // Message
+        System.out.println(getNom() + " attaque " + cible.getNom() + " et inflige " + degats + " points !");
+    }
+
     @Override
     public String toString() {
 
@@ -77,4 +119,25 @@ public class Personnage {
 
     }
 
+    @Override
+    public void seFatiguer() {
+        this.niveauVie -= 10; // La fatigue fait perdre 10 points
+        if (this.niveauVie < 0) {
+            this.niveauVie = 0; // Pour éviter un niveau de vie négatif
+        }
+
+    }
+
+    @Override
+    public boolean estVivant() {
+        return this.niveauVie > 0;
+    }
+
+    @Override
+    public void estAttaque(int points) {
+        this.niveauVie -= points; // Réduit le niveau de vie
+        if (this.niveauVie < 0) {
+            this.niveauVie = 0; // Pour éviter un niveau de vie négatif
+        }
+    }
 }

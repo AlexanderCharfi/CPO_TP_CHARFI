@@ -27,10 +27,13 @@ public abstract class Arme {
     public String getNom() {
         return nom;
     }
-
     @Override
     public String toString() {
         return "Arme{" + "nom=" + nom + ", niveau=" + niveau + '}';
+    }
+
+    public int getNiveauAttaque() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

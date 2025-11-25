@@ -43,8 +43,23 @@ public class Guerrier extends Personnage {
     }
 
     @Override
+    public void attaquer(Personnage cible) {
+        cible.estAttaque(30); // Guerrier inflige 30 points
+    }
+
+    @Override
+    public void detruire() {
+        nbGuerriers--;
+        nbPersonnages--;
+        System.out.println("Guerrier détruit : " + this.getNom());
+    }
+
+    @Override
     public String toString() {
         return super.toString() + ", À cheval: " + aCheval;
     }
 
+    boolean isACheval() {
+        return aCheval;
+    }
 }
