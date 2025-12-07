@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author Alexander
@@ -11,7 +10,9 @@ public class Interface extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface.class.getName());
     Cadenas Solution = new Cadenas(1, 5, 3, 4);
-    Cadenas now = new Cadenas(0, 0, 0, 0);
+    Cadenas now = new Cadenas(0, 0, 0, 0);    
+
+
 
     /**
      * Creates new form Interface
@@ -20,6 +21,8 @@ public class Interface extends javax.swing.JFrame {
         initComponents();
 
     }
+
+    private final CadenasGame game = new CadenasGame();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -202,53 +205,90 @@ public class Interface extends javax.swing.JFrame {
 
     private void bouton_testerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_testerActionPerformed
         // TODO add your handling code here:
+    try {
+        // 1) Lire les 4 chiffres depuis les labels
+        int v1 = Integer.parseInt(texte_chiffre_1.getText().trim());
+        int v2 = Integer.parseInt(texte_chiffre_2.getText().trim());
+        int v3 = Integer.parseInt(texte_chiffre_3.getText().trim());
+        int v4 = Integer.parseInt(texte_chiffre_4.getText().trim());
+
+        int[] proposition = new int[] { v1, v2, v3, v4 };
+
+        // 2) Appeler la logique de jeu
+        CadenasGame.Resultat r = game.testerCombinaison(proposition);
+
+        // 3) Mettre à jour l'interface (labels)
+        texte_nb_chiffres_exacts.setText(String.valueOf(r.exact));
+        texte_nb_chiffres__haut.setText(String.valueOf(r.tropHaut));
+        texte_nb_chiffres_bas.setText(String.valueOf(r.tropBas));
+
+        // 4) Optionnel : écrire un log dans ta zone de texte (si tu veux)
+        if (jTextArea1 != null) {
+            jTextArea1.append(
+                String.format("Essai: %d%d%d%d -> Exact:%d, Haut:%d, Bas:%d%n",
+                    v1, v2, v3, v4, r.exact, r.tropHaut, r.tropBas)
+            );
+        }
+
+        // 5) Optionnel : tester victoire
+        if (r.exact == 4) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Bravo ! Combinaison trouvée.");
+            // Si tu veux relancer une partie :
+            // game = new CadenasGame();  // ou game.reset() si tu crées la méthode
+        }
+
+    } catch (NumberFormatException ex) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Les 4 cases doivent contenir des chiffres (0 à 9).",
+            "Saisie invalide", javax.swing.JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_bouton_testerActionPerformed
 
     private void up_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_4ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case4(); 
+        int v = now.upVal_case4();
         texte_chiffre_4.setText(String.valueOf(v));
     }//GEN-LAST:event_up_chiffre_4ActionPerformed
 
     private void down_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_1ActionPerformed
         // TODO add your handling code here:
-        int v = now.downVal_case1(); 
+        int v = now.downVal_case1();
         texte_chiffre_1.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_1ActionPerformed
 
     private void down_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_3ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case3(); 
+        int v = now.upVal_case3();
         texte_chiffre_3.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_3ActionPerformed
 
     private void up_chiffre_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_1ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case1(); 
+        int v = now.upVal_case1();
         texte_chiffre_1.setText(String.valueOf(v));
     }//GEN-LAST:event_up_chiffre_1ActionPerformed
 
     private void up_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_2ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case2(); 
+        int v = now.upVal_case2();
         texte_chiffre_2.setText(String.valueOf(v));
     }//GEN-LAST:event_up_chiffre_2ActionPerformed
 
     private void up_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_3ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case3(); 
+        int v = now.upVal_case3();
         texte_chiffre_3.setText(String.valueOf(v));
     }//GEN-LAST:event_up_chiffre_3ActionPerformed
 
     private void down_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_2ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case2(); 
+        int v = now.upVal_case2();
         texte_chiffre_2.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_2ActionPerformed
 
     private void down_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_4ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case4(); 
+        int v = now.upVal_case4();
         texte_chiffre_4.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_4ActionPerformed
 
