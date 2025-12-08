@@ -258,7 +258,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void down_chiffre_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_3ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case3();
+        int v = now.downVal_case3();
         texte_chiffre_3.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_3ActionPerformed
 
@@ -282,13 +282,13 @@ public class Interface extends javax.swing.JFrame {
 
     private void down_chiffre_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_2ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case2();
+        int v = now.downVal_case2();
         texte_chiffre_2.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_2ActionPerformed
 
     private void down_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_down_chiffre_4ActionPerformed
         // TODO add your handling code here:
-        int v = now.upVal_case4();
+        int v = now.downVal_case4();
         texte_chiffre_4.setText(String.valueOf(v));
     }//GEN-LAST:event_down_chiffre_4ActionPerformed
 
