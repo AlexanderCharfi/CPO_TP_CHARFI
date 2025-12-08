@@ -7,23 +7,19 @@
  * @author Alexander
  */
 public class Interface extends javax.swing.JFrame {
-
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface.class.getName());
-    Cadenas Solution = new Cadenas(1, 5, 3, 4);
-    Cadenas now = new Cadenas(0, 0, 0, 0);    
-
-
-
+    //Cadenas Solution = new Cadenas(1, 5, 3, 4);
+    Cadenas now = new Cadenas(0, 0, 0, 0);
+    private int nbTentatives = 0;
+    private final int maxTentatives = 10;
     /**
      * Creates new form Interface
      */
     public Interface() {
         initComponents();
-
+        texte_score.setText(nbTentatives + " sur " + maxTentatives);
     }
-
-    private final CadenasGame game = new CadenasGame();
-
+    private CadenasGame game = new CadenasGame();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,7 +48,7 @@ public class Interface extends javax.swing.JFrame {
         texte_lbl_nb_chiffres_exacts = new javax.swing.JLabel();
         texte_nb_chiffres_exacts = new javax.swing.JLabel();
         texte_lbl_nb_chiffres_haut = new javax.swing.JLabel();
-        texte_nb_chiffres__haut = new javax.swing.JLabel();
+        texte_nb_chiffres_haut = new javax.swing.JLabel();
         texte_lbl_nb_chiffres_bas = new javax.swing.JLabel();
         texte_nb_chiffres_bas = new javax.swing.JLabel();
         texte_score = new javax.swing.JLabel();
@@ -174,8 +170,8 @@ public class Interface extends javax.swing.JFrame {
                         texte_lbl_nb_chiffres_haut.setText("Nombre de chiffres trop hauts :");
                         getContentPane().add(texte_lbl_nb_chiffres_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
-                        texte_nb_chiffres__haut.setText("0");
-                        getContentPane().add(texte_nb_chiffres__haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 10, -1));
+                        texte_nb_chiffres_haut.setText("0");
+                        getContentPane().add(texte_nb_chiffres_haut, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 10, -1));
 
                         texte_lbl_nb_chiffres_bas.setText("Nombre de chiffres trop bas :");
                         getContentPane().add(texte_lbl_nb_chiffres_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
@@ -184,7 +180,7 @@ public class Interface extends javax.swing.JFrame {
                         getContentPane().add(texte_nb_chiffres_bas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, -1, -1));
 
                         texte_score.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-                        texte_score.setText("0 sur 5");
+                        texte_score.setText("0 sur 10");
                         texte_score.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
                         texte_score.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
                         getContentPane().add(texte_score, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, -1, 70));
@@ -205,43 +201,36 @@ public class Interface extends javax.swing.JFrame {
 
     private void bouton_testerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_testerActionPerformed
         // TODO add your handling code here:
-    try {
-        // 1) Lire les 4 chiffres depuis les labels
-        int v1 = Integer.parseInt(texte_chiffre_1.getText().trim());
-        int v2 = Integer.parseInt(texte_chiffre_2.getText().trim());
-        int v3 = Integer.parseInt(texte_chiffre_3.getText().trim());
-        int v4 = Integer.parseInt(texte_chiffre_4.getText().trim());
-
-        int[] proposition = new int[] { v1, v2, v3, v4 };
-
-        // 2) Appeler la logique de jeu
-        CadenasGame.Resultat r = game.testerCombinaison(proposition);
-
-        // 3) Mettre à jour l'interface (labels)
-        texte_nb_chiffres_exacts.setText(String.valueOf(r.exact));
-        texte_nb_chiffres__haut.setText(String.valueOf(r.tropHaut));
-        texte_nb_chiffres_bas.setText(String.valueOf(r.tropBas));
-
-        // 4) Optionnel : écrire un log dans ta zone de texte (si tu veux)
-        if (jTextArea1 != null) {
-            jTextArea1.append(
-                String.format("Essai: %d%d%d%d -> Exact:%d, Haut:%d, Bas:%d%n",
-                    v1, v2, v3, v4, r.exact, r.tropHaut, r.tropBas)
-            );
+        try {
+            int v1 = Integer.parseInt(texte_chiffre_1.getText().trim());
+            int v2 = Integer.parseInt(texte_chiffre_2.getText().trim());
+            int v3 = Integer.parseInt(texte_chiffre_3.getText().trim());
+            int v4 = Integer.parseInt(texte_chiffre_4.getText().trim());
+            int[] proposition = new int[]{v1, v2, v3, v4};
+            CadenasGame.Resultat r = game.testerCombinaison(proposition);
+            texte_nb_chiffres_exacts.setText(String.valueOf(r.exact));
+            texte_nb_chiffres_haut.setText(String.valueOf(r.tropHaut));
+            texte_nb_chiffres_bas.setText(String.valueOf(r.tropBas));
+            if (jTextArea1 != null) {
+                jTextArea1.append(
+                        String.format("Essai: %d%d%d%d -> Exact:%d, Haut:%d, Bas:%d%n",
+                                v1, v2, v3, v4, r.exact, r.tropHaut, r.tropBas)
+                );
+            }
+            nbTentatives++;
+            texte_score.setText(nbTentatives + " sur " + maxTentatives);
+            if (r.exact == 4) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Bravo ! Combinaison trouvée.");
+            }
+            if (nbTentatives >= maxTentatives && r.exact != 4) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Tentatives épuisées (" + maxTentatives + "). Appuie sur Recommencer.");
+                bouton_tester.setEnabled(false);
+            }
+        } catch (NumberFormatException ex) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Les 4 cases doivent contenir des chiffres (0 à 9).",
+                    "Saisie invalide", javax.swing.JOptionPane.WARNING_MESSAGE);
         }
-
-        // 5) Optionnel : tester victoire
-        if (r.exact == 4) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Bravo ! Combinaison trouvée.");
-            // Si tu veux relancer une partie :
-            // game = new CadenasGame();  // ou game.reset() si tu crées la méthode
-        }
-
-    } catch (NumberFormatException ex) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-            "Les 4 cases doivent contenir des chiffres (0 à 9).",
-            "Saisie invalide", javax.swing.JOptionPane.WARNING_MESSAGE);
-    }
     }//GEN-LAST:event_bouton_testerActionPerformed
 
     private void up_chiffre_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_up_chiffre_4ActionPerformed
@@ -294,8 +283,18 @@ public class Interface extends javax.swing.JFrame {
 
     private void bouton_recommencerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bouton_recommencerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bouton_recommencerActionPerformed
 
+        nbTentatives = 0;
+        game = new CadenasGame();
+        texte_score.setText(nbTentatives + " sur " + maxTentatives);
+        bouton_tester.setEnabled(true);
+        texte_nb_chiffres_exacts.setText("0");
+        texte_nb_chiffres_haut.setText("0");
+        texte_nb_chiffres_bas.setText("0");
+        if (jTextArea1 != null) {
+            jTextArea1.setText("");
+        }
+    }//GEN-LAST:event_bouton_recommencerActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -320,7 +319,6 @@ public class Interface extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new Interface().setVisible(true));
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bouton_recommencer;
     private javax.swing.JButton bouton_tester;
@@ -338,9 +336,9 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel texte_lbl_nb_chiffres_bas;
     private javax.swing.JLabel texte_lbl_nb_chiffres_exacts;
     private javax.swing.JLabel texte_lbl_nb_chiffres_haut;
-    private javax.swing.JLabel texte_nb_chiffres__haut;
     private javax.swing.JLabel texte_nb_chiffres_bas;
     private javax.swing.JLabel texte_nb_chiffres_exacts;
+    private javax.swing.JLabel texte_nb_chiffres_haut;
     private javax.swing.JLabel texte_score;
     private javax.swing.JLabel texte_tentatives;
     private javax.swing.JButton up_chiffre_1;
