@@ -24,22 +24,40 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="67" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               <Component id="Sous_Titre_label" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="Titre_label" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="Facile_Texte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Component id="Normal_Texte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="34" max="32767" attributes="0"/>
+              <Component id="Difficile_Texte" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
-                      <Component id="Titre_label" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Quitter_Bouton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
-                      <Component id="Commencer_bouton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="Commencer_facile_bouton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Commencer_normal_bouton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="Commencer_difficile_bouton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -50,9 +68,21 @@
               <Component id="Titre_label" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="Sous_Titre_label" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-              <Component id="Commencer_bouton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Facile_Texte" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Normal_Texte" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Difficile_Texte" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="Commencer_normal_bouton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Commencer_facile_bouton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Commencer_difficile_bouton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Component id="Quitter_Bouton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,12 +104,51 @@
         <Property name="text" type="java.lang.String" value="Jeu inspir&#xe9;e par Master Mind"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="Commencer_bouton">
+    <Component class="javax.swing.JButton" name="Commencer_normal_bouton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="COMMENCER"/>
+        <Property name="text" type="java.lang.String" value="NORMAL"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Commencer_boutonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Commencer_normal_boutonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Commencer_facile_bouton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="FACILE"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Commencer_facile_boutonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Commencer_difficile_bouton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="DIFFICILE"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Commencer_difficile_boutonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Facile_Texte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Facile : 20 tentatives"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Normal_Texte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Normal : 10 tentatives"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Difficile_Texte">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Difficile : 5 tentatives"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Quitter_Bouton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quitter"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Quitter_BoutonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

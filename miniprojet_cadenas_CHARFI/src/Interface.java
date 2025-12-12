@@ -13,14 +13,12 @@ public class Interface extends javax.swing.JFrame {
     Cadenas now = new Cadenas(0, 0, 0, 0);
     private int nbTentatives = 0;
     private int maxTentatives;
-
     /**
      * Creates new form Interface
      */
     public Interface() {
         this(10);
     }
-
     public Interface(int maxTentatives) {
         this.maxTentatives = maxTentatives;
         initComponents();
@@ -63,6 +61,8 @@ public class Interface extends javax.swing.JFrame {
         texte_score = new javax.swing.JLabel();
         texte_tentatives = new javax.swing.JLabel();
         bouton_recommencer = new javax.swing.JButton();
+        Quitter_Bouton = new javax.swing.JButton();
+        écran_titre_jeu_bouton = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -205,6 +205,22 @@ public class Interface extends javax.swing.JFrame {
                         });
                         getContentPane().add(bouton_recommencer, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, -1));
 
+                        Quitter_Bouton.setText("Quitter");
+                        Quitter_Bouton.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                Quitter_BoutonActionPerformed(evt);
+                            }
+                        });
+                        getContentPane().add(Quitter_Bouton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, -1, -1));
+
+                        écran_titre_jeu_bouton.setText("Retour à l'accueil");
+                        écran_titre_jeu_bouton.addActionListener(new java.awt.event.ActionListener() {
+                            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                                écran_titre_jeu_boutonActionPerformed(evt);
+                            }
+                        });
+                        getContentPane().add(écran_titre_jeu_bouton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
+
                         pack();
                     }// </editor-fold>//GEN-END:initComponents
 
@@ -309,6 +325,20 @@ public class Interface extends javax.swing.JFrame {
             jTextArea1.setText("");
         }
     }//GEN-LAST:event_bouton_recommencerActionPerformed
+
+    private void écran_titre_jeu_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_écran_titre_jeu_boutonActionPerformed
+        // TODO add your handling code here:
+        ecran_titre accueil = new ecran_titre();
+        accueil.setLocationRelativeTo(this); 
+        accueil.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_écran_titre_jeu_boutonActionPerformed
+
+    private void Quitter_BoutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quitter_BoutonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_Quitter_BoutonActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -334,6 +364,7 @@ public class Interface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new Interface().setVisible(true));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Quitter_Bouton;
     private javax.swing.JButton bouton_recommencer;
     private javax.swing.JButton bouton_tester;
     private javax.swing.JButton down_chiffre_1;
@@ -359,5 +390,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton up_chiffre_2;
     private javax.swing.JButton up_chiffre_3;
     private javax.swing.JButton up_chiffre_4;
+    private javax.swing.JButton écran_titre_jeu_bouton;
     // End of variables declaration//GEN-END:variables
 }

@@ -30,6 +30,8 @@ public class ecran_defaite extends javax.swing.JFrame {
         Defaite_label = new javax.swing.JLabel();
         EcranTitre_bouton = new javax.swing.JButton();
         Relancer_bouton = new javax.swing.JButton();
+        Quitter_défaite_bouton = new javax.swing.JButton();
+        image_label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,31 +52,51 @@ public class ecran_defaite extends javax.swing.JFrame {
             }
         });
 
+        Quitter_défaite_bouton.setText("Quitter");
+        Quitter_défaite_bouton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Quitter_défaite_boutonActionPerformed(evt);
+            }
+        });
+
+        image_label.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(Defaite_label)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(EcranTitre_bouton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addComponent(Relancer_bouton)
                 .addGap(60, 60, 60))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(image_label)
+                        .addGap(45, 45, 45)
+                        .addComponent(Defaite_label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(178, 178, 178)
+                        .addComponent(Quitter_défaite_bouton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
-                .addComponent(Defaite_label, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Defaite_label, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(image_label))
                 .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EcranTitre_bouton)
                     .addComponent(Relancer_bouton))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addComponent(Quitter_défaite_bouton)
+                .addGap(41, 41, 41))
         );
 
         pack();
@@ -96,6 +118,12 @@ public class ecran_defaite extends javax.swing.JFrame {
         jeu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Relancer_boutonActionPerformed
+
+    private void Quitter_défaite_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quitter_défaite_boutonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_Quitter_défaite_boutonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,6 +153,8 @@ public class ecran_defaite extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Defaite_label;
     private javax.swing.JButton EcranTitre_bouton;
+    private javax.swing.JButton Quitter_défaite_bouton;
     private javax.swing.JButton Relancer_bouton;
+    private javax.swing.JLabel image_label;
     // End of variables declaration//GEN-END:variables
 }

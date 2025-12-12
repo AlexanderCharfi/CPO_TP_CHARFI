@@ -30,6 +30,7 @@ public class ecran_victoire extends javax.swing.JFrame {
         Victoire_label = new javax.swing.JLabel();
         EcranTitre_bouton = new javax.swing.JButton();
         Recommencer_bouton = new javax.swing.JButton();
+        Quitter_victoire_bouton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,31 +51,45 @@ public class ecran_victoire extends javax.swing.JFrame {
             }
         });
 
+        Quitter_victoire_bouton.setText("Quitter");
+        Quitter_victoire_bouton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Quitter_victoire_boutonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(Victoire_label)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(Victoire_label))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(Quitter_victoire_bouton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(EcranTitre_bouton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(Recommencer_bouton)
-                .addGap(49, 49, 49))
+                .addGap(51, 51, 51))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(Victoire_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EcranTitre_bouton)
                     .addComponent(Recommencer_bouton))
-                .addGap(88, 88, 88))
+                .addGap(58, 58, 58)
+                .addComponent(Quitter_victoire_bouton)
+                .addGap(34, 34, 34))
         );
 
         pack();
@@ -96,6 +111,12 @@ public class ecran_victoire extends javax.swing.JFrame {
         jeu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_Recommencer_boutonActionPerformed
+
+    private void Quitter_victoire_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quitter_victoire_boutonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_Quitter_victoire_boutonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,6 +145,7 @@ public class ecran_victoire extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EcranTitre_bouton;
+    private javax.swing.JButton Quitter_victoire_bouton;
     private javax.swing.JButton Recommencer_bouton;
     private javax.swing.JLabel Victoire_label;
     // End of variables declaration//GEN-END:variables

@@ -8,7 +8,7 @@
  * @author Alexander
  */
 public class ecran_titre extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ecran_titre.class.getName());
 
     /**
@@ -17,9 +17,6 @@ public class ecran_titre extends javax.swing.JFrame {
     public ecran_titre() {
         initComponents();
     }
-    
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,7 +29,13 @@ public class ecran_titre extends javax.swing.JFrame {
 
         Titre_label = new javax.swing.JLabel();
         Sous_Titre_label = new javax.swing.JLabel();
-        Commencer_bouton = new javax.swing.JButton();
+        Commencer_normal_bouton = new javax.swing.JButton();
+        Commencer_facile_bouton = new javax.swing.JButton();
+        Commencer_difficile_bouton = new javax.swing.JButton();
+        Facile_Texte = new javax.swing.JLabel();
+        Normal_Texte = new javax.swing.JLabel();
+        Difficile_Texte = new javax.swing.JLabel();
+        Quitter_Bouton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,10 +45,37 @@ public class ecran_titre extends javax.swing.JFrame {
         Sous_Titre_label.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         Sous_Titre_label.setText("Jeu inspirée par Master Mind");
 
-        Commencer_bouton.setText("COMMENCER");
-        Commencer_bouton.addActionListener(new java.awt.event.ActionListener() {
+        Commencer_normal_bouton.setText("NORMAL");
+        Commencer_normal_bouton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Commencer_boutonActionPerformed(evt);
+                Commencer_normal_boutonActionPerformed(evt);
+            }
+        });
+
+        Commencer_facile_bouton.setText("FACILE");
+        Commencer_facile_bouton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Commencer_facile_boutonActionPerformed(evt);
+            }
+        });
+
+        Commencer_difficile_bouton.setText("DIFFICILE");
+        Commencer_difficile_bouton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Commencer_difficile_boutonActionPerformed(evt);
+            }
+        });
+
+        Facile_Texte.setText("Facile : 20 tentatives");
+
+        Normal_Texte.setText("Normal : 10 tentatives");
+
+        Difficile_Texte.setText("Difficile : 5 tentatives");
+
+        Quitter_Bouton.setText("Quitter");
+        Quitter_Bouton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Quitter_BoutonActionPerformed(evt);
             }
         });
 
@@ -54,18 +84,34 @@ public class ecran_titre extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 67, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(Sous_Titre_label)
                 .addGap(51, 51, 51))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Titre_label)
+                .addGap(149, 149, 149))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(38, 38, 38)
+                .addComponent(Facile_Texte)
+                .addGap(35, 35, 35)
+                .addComponent(Normal_Texte)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(Difficile_Texte)
+                .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(Titre_label))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Quitter_Bouton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(Commencer_bouton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(50, 50, 50)
+                        .addComponent(Commencer_facile_bouton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Commencer_normal_bouton)
+                        .addGap(66, 66, 66)
+                        .addComponent(Commencer_difficile_bouton)))
+                .addGap(42, 42, 42))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,23 +120,58 @@ public class ecran_titre extends javax.swing.JFrame {
                 .addComponent(Titre_label)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Sous_Titre_label)
-                .addGap(71, 71, 71)
-                .addComponent(Commencer_bouton)
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Facile_Texte)
+                    .addComponent(Normal_Texte)
+                    .addComponent(Difficile_Texte))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Commencer_normal_bouton)
+                    .addComponent(Commencer_facile_bouton)
+                    .addComponent(Commencer_difficile_bouton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(Quitter_Bouton)
+                .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Commencer_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Commencer_boutonActionPerformed
+    private void Commencer_normal_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Commencer_normal_boutonActionPerformed
+        int tentatives = 10;
+        Interface jeu = new Interface(tentatives);
+        jeu.setTitle("Cadenas - Normal (" + tentatives + " tentatives)");
+        jeu.setLocationRelativeTo(null);
+        jeu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Commencer_normal_boutonActionPerformed
 
-    Interface jeu = new Interface();
-    jeu.setTitle("Cadenas - Partie");
-    jeu.setLocationRelativeTo(null); 
-    jeu.setVisible(true);
-    this.dispose();
+    private void Commencer_facile_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Commencer_facile_boutonActionPerformed
+        // TODO add your handling code here:
+        int tentatives = 20; 
+        Interface jeu = new Interface(tentatives);
+        jeu.setTitle("Cadenas - Facile (" + tentatives + " tentatives)");
+        jeu.setLocationRelativeTo(null);
+        jeu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Commencer_facile_boutonActionPerformed
 
-    }//GEN-LAST:event_Commencer_boutonActionPerformed
+    private void Commencer_difficile_boutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Commencer_difficile_boutonActionPerformed
+        // TODO add your handling code here:
+        int tentatives = 5; 
+        Interface jeu = new Interface(tentatives);
+        jeu.setTitle("Cadenas - Difficile (" + tentatives + " tentatives)");
+        jeu.setLocationRelativeTo(null);
+        jeu.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_Commencer_difficile_boutonActionPerformed
+
+    private void Quitter_BoutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Quitter_BoutonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_Quitter_BoutonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -118,7 +199,13 @@ public class ecran_titre extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Commencer_bouton;
+    private javax.swing.JButton Commencer_difficile_bouton;
+    private javax.swing.JButton Commencer_facile_bouton;
+    private javax.swing.JButton Commencer_normal_bouton;
+    private javax.swing.JLabel Difficile_Texte;
+    private javax.swing.JLabel Facile_Texte;
+    private javax.swing.JLabel Normal_Texte;
+    private javax.swing.JButton Quitter_Bouton;
     private javax.swing.JLabel Sous_Titre_label;
     private javax.swing.JLabel Titre_label;
     // End of variables declaration//GEN-END:variables
