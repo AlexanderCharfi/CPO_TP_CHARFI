@@ -12,14 +12,20 @@ public class Interface extends javax.swing.JFrame {
     //Cadenas Solution = new Cadenas(1, 5, 3, 4);
     Cadenas now = new Cadenas(0, 0, 0, 0);
     private int nbTentatives = 0;
-    private final int maxTentatives = 10;
+    private int maxTentatives;
 
     /**
      * Creates new form Interface
      */
     public Interface() {
+        this(10);
+    }
+
+    public Interface(int maxTentatives) {
+        this.maxTentatives = maxTentatives;
         initComponents();
         texte_score.setText(nbTentatives + " sur " + maxTentatives);
+        bouton_tester.setEnabled(true);
     }
     private CadenasGame game = new CadenasGame();
 
