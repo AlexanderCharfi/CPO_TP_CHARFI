@@ -7,11 +7,13 @@
  * @author Alexander
  */
 public class Interface extends javax.swing.JFrame {
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Interface.class.getName());
     //Cadenas Solution = new Cadenas(1, 5, 3, 4);
     Cadenas now = new Cadenas(0, 0, 0, 0);
     private int nbTentatives = 0;
     private final int maxTentatives = 10;
+
     /**
      * Creates new form Interface
      */
@@ -20,6 +22,7 @@ public class Interface extends javax.swing.JFrame {
         texte_score.setText(nbTentatives + " sur " + maxTentatives);
     }
     private CadenasGame game = new CadenasGame();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,7 +226,12 @@ public class Interface extends javax.swing.JFrame {
                 javax.swing.JOptionPane.showMessageDialog(this, "Bravo ! Combinaison trouvée.");
             }
             if (nbTentatives >= maxTentatives && r.exact != 4) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Tentatives épuisées (" + maxTentatives + "). Appuie sur Recommencer.");
+                //javax.swing.JOptionPane.showMessageDialog(this, "Tentatives épuisées (" + maxTentatives + "). Appuie sur Recommencer.");
+                bouton_tester.setEnabled(false);
+                ecran_defaite defaite = new ecran_defaite();
+                defaite.setLocationRelativeTo(this); // centre par rapport à la fenêtre actuelle
+                defaite.setVisible(true);
+                this.dispose();
                 bouton_tester.setEnabled(false);
             }
         } catch (NumberFormatException ex) {
